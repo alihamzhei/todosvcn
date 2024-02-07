@@ -2,11 +2,13 @@
 
 namespace Src\Todo\Infrastructure\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Src\Todo\Domain\Repositories\TodoItemRepository;
 use Src\Todo\Domain\Repositories\TodoListRepository;
 use Src\Todo\Domain\Services\TodoListService;
 use Src\Todo\Infrastructure\Models\TodoItem;
+use Src\Todo\Infrastructure\Models\TodoList;
 use Src\Todo\Infrastructure\Repositories\TodoItemRepositoryInterface;
 use Src\Todo\Infrastructure\Repositories\TodoListRepositoryInterface;
 use Src\Todo\Infrastructure\Services\TodoItemServiceInterface;
@@ -33,6 +35,10 @@ class TodoServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->loadMigrationsFrom(base_path('src/Todo/Infrastructure/Database/Migrations'));
+        $this->loadRoutesFrom(base_path('src/Todo/Presentation/API/V1/api.php'));
+
+//        Route::model('todoList', TodoList::class);
+
     }
 }

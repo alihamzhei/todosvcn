@@ -160,6 +160,8 @@ return [
          * Package Service Providers...
          */
 
+        \Src\Common\Infrastructure\Providers\ResponseServiceProvider::class ,
+
         /*
          * Application Service Providers...
          */
@@ -168,6 +170,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         \Src\Common\Infrastructure\Providers\EventServiceProvider::class,
         \Src\Common\Infrastructure\Providers\RouteServiceProvider::class,
+        \Src\Todo\Infrastructure\Providers\TodoServiceProvider::class,
     ])->toArray(),
 
     /*

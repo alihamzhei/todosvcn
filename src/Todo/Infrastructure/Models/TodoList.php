@@ -10,4 +10,6 @@ class TodoList extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+
 }
