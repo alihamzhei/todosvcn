@@ -2,6 +2,7 @@
 
 namespace Src\Todo\Domain\Services;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Src\Todo\Application\DTOs\TodoItemDTO;
 use Src\Todo\Application\DTOs\TodoListDTO;
@@ -16,9 +17,11 @@ class TodoListService implements TodoListServiceInterface
     {
     }
 
-    public function all(): Collection
+    public function all(): LengthAwarePaginator
     {
-        return $this->listRepository->all();
+        return $this->listRepository->paginate(where: [
+            'user_id' => auth()->user()->id
+        ]);
     }
 
     public function show(TodoListID $todoItemID): ?TodoList

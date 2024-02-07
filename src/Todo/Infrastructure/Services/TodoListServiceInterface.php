@@ -2,14 +2,14 @@
 
 namespace Src\Todo\Infrastructure\Services;
 
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Src\Todo\Application\DTOs\TodoListDTO;
 use Src\Todo\Domain\ValueObjects\TodoList\TodoListID;
 use Src\Todo\Infrastructure\Models\TodoList;
 
 interface TodoListServiceInterface
 {
-    public function all(): Collection;
+    public function all(): LengthAwarePaginator;
 
     public function show(TodoListID $todoItemID): ?TodoList;
 

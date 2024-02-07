@@ -4,6 +4,7 @@ namespace Src\Common\Infrastructure\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Src\Common\Infrastructure\Guard\JWTGuard;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,17 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->app['auth']->extend(
+            'jwt-auth',
+            function ($app, $name, array $config) {
+                $guard = new JWTGuard(
+                    $app['tymon.jwt'],
+                    $app['request']
+                );
+                $app->refresh('request', $guard, 'setRequest');
+
+                return $guard;
+            }
+        );
     }
 }

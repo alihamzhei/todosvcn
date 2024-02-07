@@ -16,7 +16,7 @@ use Src\Todo\Application\HTTP\API\V1\TodoListController;
 |
 */
 
-Route::prefix('api/v1')->group(function () {
+Route::prefix('api/v1')->middleware('auth:jwt')->group(function () {
     Route::get('todo_lists', [TodoListController::class, 'index']);
     Route::get('todo_lists/{todo_id}', [TodoListController::class, 'show']);
     Route::post('todo_lists', [TodoListController::class, 'store']);

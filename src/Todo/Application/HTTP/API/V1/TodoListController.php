@@ -51,7 +51,7 @@ class TodoListController extends Controller
     {
         $todoListDTO = new TodoListDTO(
             $todoListRequest->title,
-            1
+            auth()->user()->id
         );
 
         $todoList = $this->listService->store($todoListDTO);

@@ -3,6 +3,7 @@
 namespace Src\Common\Infrastructure\Kernel;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Src\Common\Infrastructure\Middleware\CheckJWTAuthentication;
 
 class Kernel extends HttpKernel
 {
