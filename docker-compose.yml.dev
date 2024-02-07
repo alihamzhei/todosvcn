@@ -8,15 +8,15 @@ services:
     ports:
       - "8009:80"
     volumes:
-      - "./nginx/conf.d/gatewaysvc.conf:/etc/nginx/conf.d/default.conf"
+      - "./nginx/conf.d/todosvc.conf:/etc/nginx/conf.d/default.conf"
       - "nginx_logs:/var/log/nginx/"
     volumes_from:
       - php
-    container_name: gatewaysvc_nginx
-    hostname: gatewaysvc_nginx
+    container_name: todosvc_nginx
+    hostname: todosvc_nginx
     restart: unless-stopped
     networks:
-      - gatewaysvc_net
+      - todosvc_net
     depends_on:
       mysql:
         condition: service_healthy
@@ -31,14 +31,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: gatewaysvc:latest
-    container_name: gatewaysvc
-    hostname: gatewaysvc
+    image: todosvc:latest
+    container_name: todosvc
+    hostname: todosvc
     env_file:
       - .env
     restart: unless-stopped
     networks:
-      - gatewaysvc_net
+      - todosvc_net
     depends_on:
       mysql:
         condition: service_healthy
@@ -50,19 +50,19 @@ services:
     image: 'mysql:8.3.0'
     ports:
        - '48306:3306'
-    container_name: gatewaysvc_mysql
-    hostname: gatewaysvc_mysql
+    container_name: todosvc_mysql
+    hostname: todosvc_mysql
     restart: unless-stopped
     environment:
        MYSQL_ROOT_PASSWORD: 'secret'
-       MYSQL_DATABASE: 'gatewaysvc_db'
-       MYSQL_USER: 'gatewaysvc'
+       MYSQL_DATABASE: 'todosvc_db'
+       MYSQL_USER: 'todosvc'
        MYSQL_PASSWORD: 'password'
        MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
         - 'mysql:/var/lib/mysql/'
     networks:
-      - gatewaysvc_net
+      - todosvc_net
     healthcheck:
       test:
         - CMD
@@ -73,7 +73,7 @@ services:
       timeout: 5s
 
 networks:
-  gatewaysvc_net:
+  todosvc_net:
 volumes:
   mysql:
   nginx_logs:

@@ -10,7 +10,6 @@ use Src\Todo\Application\Requests\API\V1\StoreTodoItemRequest;
 use Src\Todo\Application\Requests\API\V1\UpdateTodoItemRequest;
 use Src\Todo\Domain\ValueObjects\TodoItem\TodoItemID;
 use Src\Todo\Domain\ValueObjects\TodoList\TodoListID;
-use Src\Todo\Infrastructure\Models\TodoItem;
 use Src\Todo\Infrastructure\Services\TodoItemServiceInterface;
 
 class TodoItemController extends Controller
