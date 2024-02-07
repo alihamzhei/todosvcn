@@ -29,6 +29,7 @@ class TodoItemController extends Controller
     public function index($todo_id): JsonResponse
     {
         $todoLists = $this->todoItemService->all(new TodoListID($todo_id));
+
         return Response::message('todo items list found successfully')
             ->data($todoLists)
             ->send();
