@@ -2,8 +2,10 @@
 
 namespace Src\Todo\Infrastructure\Repositories;
 
-use Src\Common\Infrastructure\Repositories\EloquentRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
+use Src\Todo\Domain\ValueObjects\TodoList\TodoListID;
 
-interface TodoItemRepositoryInterface extends EloquentRepositoryInterface
+interface TodoItemRepositoryInterface
 {
+    public function findTodoItemsByTodoID(TodoListID $todoListID): Collection;
 }

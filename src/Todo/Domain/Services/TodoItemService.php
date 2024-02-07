@@ -5,6 +5,7 @@ namespace Src\Todo\Domain\Services;
 use Illuminate\Support\Collection;
 use Src\Todo\Application\DTOs\TodoItemDTO;
 use Src\Todo\Domain\ValueObjects\TodoItem\TodoItemID;
+use Src\Todo\Domain\ValueObjects\TodoList\TodoListID;
 use Src\Todo\Infrastructure\Models\TodoItem;
 use Src\Todo\Infrastructure\Repositories\TodoItemRepositoryInterface;
 use Src\Todo\Infrastructure\Services\TodoItemServiceInterface;
@@ -12,13 +13,13 @@ use Src\Todo\Infrastructure\Services\TodoItemServiceInterface;
 class TodoItemService implements TodoItemServiceInterface
 {
 
-    public function __construct(private TodoItemRepositoryInterface $todoItemRepository)
+    public function __construct(private readonly TodoItemRepositoryInterface $todoItemRepository)
     {
     }
 
-    public function all(): Collection
+    public function all(TodoListID $todoListID): Collection
     {
-        return $this->todoItemRepository->all();
+        return $this->todoItemRepository->findTodoItemsByTodoID($todoListID);
     }
 
     /**

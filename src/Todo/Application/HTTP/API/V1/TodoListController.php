@@ -7,16 +7,15 @@ use Src\Common\Infrastructure\Controllers\Controller;
 use Src\Common\Infrastructure\Facades\Response;
 use Src\Todo\Application\DTOs\TodoListDTO;
 use Src\Todo\Application\Requests\API\V1\StoreTodoListRequest;
-use Src\Todo\Application\Requests\API\V1\UpdateTodoItemRequest;
 use Src\Todo\Application\Requests\API\V1\UpdateTodoListRequest;
 use Src\Todo\Domain\ValueObjects\TodoList\TodoListID;
-use Src\Todo\Infrastructure\Models\TodoList;
 use Src\Todo\Infrastructure\Services\TodoListServiceInterface;
 
 class TodoListController extends Controller
 {
     public function __construct(public TodoListServiceInterface $listService)
     {
+
     }
 
     public function index(): JsonResponse

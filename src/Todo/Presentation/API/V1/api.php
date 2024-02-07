@@ -17,15 +17,15 @@ use Src\Todo\Application\HTTP\API\V1\TodoListController;
 */
 
 Route::prefix('api/v1')->group(function () {
-    Route::get('todo_list', [TodoListController::class, 'index']);
-    Route::get('todo_list/{todo_id}', [TodoListController::class, 'show']);
-    Route::post('todo_list', [TodoListController::class, 'store']);
-    Route::put('todo_list/{todo_id}', [TodoListController::class, 'update']);
-    Route::delete('todo_list/{todo_id}', [TodoListController::class, 'delete']);
+    Route::get('todo_lists', [TodoListController::class, 'index']);
+    Route::get('todo_lists/{todo_id}', [TodoListController::class, 'show']);
+    Route::post('todo_lists', [TodoListController::class, 'store']);
+    Route::put('todo_lists/{todo_id}', [TodoListController::class, 'update']);
+    Route::delete('todo_lists/{todo_id}', [TodoListController::class, 'delete']);
 
-    Route::get('todo_list/{todo_id}/todo_items', [TodoItemController::class, 'delete']);
+    Route::get('todo_lists/{todo_id}/todo_items', [TodoItemController::class, 'index']);
     Route::get('todo_items/{todo_item}', [TodoItemController::class, 'show']);
-    Route::post('todo_list/{todo_id}/todo_items', [TodoItemController::class, 'show']);
+    Route::post('todo_lists/{todo_id}/todo_items', [TodoItemController::class, 'store']);
     Route::put('todo_items/{todo_item}', [TodoItemController::class, 'update']);
     Route::delete('todo_items/{todo_item}', [TodoItemController::class, 'delete']);
 

@@ -2,13 +2,11 @@
 
 namespace Src\Todo\Infrastructure\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Src\Todo\Domain\Repositories\TodoItemRepository;
 use Src\Todo\Domain\Repositories\TodoListRepository;
+use Src\Todo\Domain\Services\TodoItemService;
 use Src\Todo\Domain\Services\TodoListService;
-use Src\Todo\Infrastructure\Models\TodoItem;
-use Src\Todo\Infrastructure\Models\TodoList;
 use Src\Todo\Infrastructure\Repositories\TodoItemRepositoryInterface;
 use Src\Todo\Infrastructure\Repositories\TodoListRepositoryInterface;
 use Src\Todo\Infrastructure\Services\TodoItemServiceInterface;
@@ -21,7 +19,7 @@ class TodoServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(TodoItemServiceInterface::class, TodoItem::class);
+        $this->app->bind(TodoItemServiceInterface::class, TodoItemService::class);
         $this->app->bind(TodoListServiceInterface::class, TodoListService::class);
 
         $this->app->bind(TodoListRepositoryInterface::class, TodoListRepository::class);

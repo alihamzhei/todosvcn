@@ -26,7 +26,6 @@ class StoreTodoItemRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:500'],
             'priority' => ['required', 'numeric', 'max:3'],
-            'todo_id' => ['required', 'numeric', 'exists:todo_lists,id'],
         ];
     }
 }

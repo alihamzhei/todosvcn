@@ -8,7 +8,7 @@ class TodoItemDTO
         public string $title,
         public string $text,
         public string $priority,
-        public int $todo_id,
+        public ?int   $todo_id = null,
     )
     {
 
