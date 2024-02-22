@@ -72,7 +72,7 @@ class TodoListController extends Controller
     {
         $todoListDTO = new TodoListDTO(
             $updateTodoListRequest->title,
-            1
+            auth()->user()->id
         );
 
         $updatedTodo = $this->listService->update(new TodoListID($todo_id), $todoListDTO);
